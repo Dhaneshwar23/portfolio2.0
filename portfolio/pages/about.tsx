@@ -14,6 +14,7 @@ import ProfilePicture from '@/public/images/IMG_7887.jpg';
 import { useInView, useMotionValue, useSpring } from 'framer-motion';
 import Skills from '@/components/Skills';
 import Experiences from '@/components/Experience';
+import apiData from '@/components/hooks/apiData';
 
 type Props = {
   pageInfo: PageInfo;
@@ -47,37 +48,40 @@ const AnimatedNumbers = ({ value }: { value: number }) => {
 }
 
 export default function About({ }: Props) {
-  const [data, setData] = useState<Props | null>(null
-  );
+  
+  const [data] = apiData();
+  
+  // const [data, setData] = useState<Props | null>(null
+  // );
 
-  const processData = async () => {
-    try {
-      const pageInfo: PageInfo = await fetchPageInfo();
-      const experiences: Experience[] = await fetchExperiences();
+  // const processData = async () => {
+  //   try {
+  //     const pageInfo: PageInfo = await fetchPageInfo();
+  //     const experiences: Experience[] = await fetchExperiences();
 
-      const skills: Skill[] = await fetchSkills();
+  //     const skills: Skill[] = await fetchSkills();
 
-      const projects: Project[] = await fetchProjects();
+  //     const projects: Project[] = await fetchProjects();
 
-      const socials: Social[] = await fetchSocials();
-      // Example processing of data
-      const processedData = {
-        pageInfo,
-        experiences,
-        skills,
-        projects,
-        socials
-      };
-      setData(processedData);
-    }
-    catch (err) {
-      console.log('err happend in page.tsx-->  ', err);
-    }
-  }
-  useEffect(() => {
-    // Define a function to process data
-    processData();
-  }, []);
+  //     const socials: Social[] = await fetchSocials();
+  //     // Example processing of data
+  //     const processedData = {
+  //       pageInfo,
+  //       experiences,
+  //       skills,
+  //       projects,
+  //       socials
+  //     };
+  //     setData(processedData);
+  //   }
+  //   catch (err) {
+  //     console.log('err happend in page.tsx-->  ', err);
+  //   }
+  // }
+  // useEffect(() => {
+  //   // Define a function to process data
+  //   processData();
+  // }, []);
   let profilePic = data?.pageInfo.profilePic === undefined ? ProfilePicture : urlFor(data?.pageInfo.profilePic).url();
   //let profilePic = 'https://cdn.sanity.io/images/myk5m1s4/production/2772729ba0468caefd566e2c27f8a740809ec9f1-2368x1941.jpg';
   return (

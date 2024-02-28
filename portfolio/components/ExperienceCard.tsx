@@ -22,6 +22,7 @@ export default function ExperienceCard({ experience }: Props) {
                     initial={{ y: 50 }}
                     whileInView={{ y: 0 }}
                     transition={{ duration: 0.5, type: "spring" }}
+                    className=' ml-[2.75rem] xs:ml-0'
 
                 >
                     <h3 className='capitalize font-bold text-2xl items-start sm:text-xl xs:text-lg'>{experience?.jobTitle}&nbsp;<span className={`text-primary uppercase dark:text-primary-dark sm:w-14 sm:block`}>@{experience?.company}</span></h3>

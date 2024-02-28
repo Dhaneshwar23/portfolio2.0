@@ -16,6 +16,7 @@ import LightBulb from "../public/images/LightBulb.svg";
 import layouts from "./layout";
 import Link from "next/link";
 import Script from "next/script";
+import apiData from "@/components/hooks/apiData";
 
 const montSerrat = Montserrat(
   {
@@ -33,37 +34,39 @@ type Props = {
 };
 
 export default function Home() {
-  const [data, setData] = useState<Props | null>(null
-  );
+  // const [data, setData] = useState<Props | null>(null
+  // );
 
-  const processData = async () => {
-    try {
-      const pageInfo: PageInfo = await fetchPageInfo();
-      const experiences: Experience[] = await fetchExperiences();
+  // const processData = async () => {
+  //   try {
+  //     const pageInfo: PageInfo = await fetchPageInfo();
+  //     const experiences: Experience[] = await fetchExperiences();
 
-      const skills: Skill[] = await fetchSkills();
+  //     const skills: Skill[] = await fetchSkills();
 
-      const projects: Project[] = await fetchProjects();
+  //     const projects: Project[] = await fetchProjects();
 
-      const socials: Social[] = await fetchSocials();
-      // Example processing of data
-      const processedData = {
-        pageInfo,
-        experiences,
-        skills,
-        projects,
-        socials
-      };
-      setData(processedData);
-    }
-    catch (err) {
-      console.log('err happend in page.tsx-->  ', err);
-    }
-  }
-  useEffect(() => {
-    // Define a function to process data
-    processData();
-  }, []);
+  //     const socials: Social[] = await fetchSocials();
+  //     // Example processing of data
+  //     const processedData = {
+  //       pageInfo,
+  //       experiences,
+  //       skills,
+  //       projects,
+  //       socials
+  //     };
+  //     setData(processedData);
+  //   }
+  //   catch (err) {
+  //     console.log('err happend in page.tsx-->  ', err);
+  //   }
+  // }
+  // useEffect(() => {
+  //   // Define a function to process data
+  //   processData();
+  // }, []);
+
+  const [data] = apiData();
 
   return (
 

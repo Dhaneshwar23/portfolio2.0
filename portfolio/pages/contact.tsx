@@ -21,9 +21,9 @@ export default function Contact({}: Props) {
   return (
     <>
     <NavBar />
-    <div className="h-screen relative flex flex-col text-center md:text-left px-4 md:px-10 justify-center items-center bg-light w-full dark:bg-dark dark:text-light">
+    <div className="h-screen relative flex flex-col text-center md:text-left px-4 md:px-10 justify-center items-center bg-light w-full dark:bg-dark dark:text-light mx-auto">
             
-            <div className="flex flex-col space-y-10 w-full md:w-auto">
+            <div className="flex flex-col space-y-10 md:w-auto w-[80%] mt-42">
                 <h4 className="text-4xl font-semibold text-center"> I have got just what you need. {" "}
                     <span className="decoration-[#F7AB0A]/50 underline">Let&apos;s Chat</span>
                 </h4>
