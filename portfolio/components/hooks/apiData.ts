@@ -14,7 +14,7 @@ type Props = {
     projects: Project[];
 }
 
-export default function apiData() {
+export default function ApiData() {
     const [data, setData] = useState<Props | null>(null
     );
 
