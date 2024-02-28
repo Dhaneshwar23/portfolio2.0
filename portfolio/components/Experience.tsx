@@ -19,7 +19,7 @@ export default function Experience({ experiences }: Props) {
         offset:["start end","center start"]
     })
     return (
-        <div className=' mt-60 xs:mt-[10rem]'>
+        <div className=' mt-60 xs:mt-[10rem] mb-28 '>
             <h2 className='font-bold text-8xl text-center mb-32 w-full md:text-6xl xs:text-4xl md:mb-16'>Experience</h2>
             <div ref={ref} className='w-[75%] mx-auto relative lg:w-[90%] md:w-full'>
                 <motion.div 
