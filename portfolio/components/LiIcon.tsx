@@ -12,7 +12,7 @@ export default function LiIcon({ reference }: { reference: any }) {
     return (
         <figure className='absolute -left-[3.3rem] stroke-dark dark:stroke-light sm:!-left-[3.4rem] xs:!-left-[3.4rem] xl:!-left-[3.3rem] lg:!-left-[1.2rem]'>
             <svg className='-rotate-92' width={75} height={75} viewBox='0 0 100 100'>
-                <motion.circle cx={75} cy={75} r={20} className='stroke-primary stroke-1 fill-none dark:stroke-primaryDark' />
+                <motion.circle cx={75} cy={75} r={20} className='stroke-primary stroke-1 fill-none dark:stroke-primary-dark' />
                 <motion.circle 
                 style={{
                     pathLength: scrollYProgress

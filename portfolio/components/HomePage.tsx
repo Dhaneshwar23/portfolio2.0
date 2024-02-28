@@ -83,7 +83,7 @@ export default function Layout({ pageInfo }: Props) {
                                     d="M11 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-5m-7 1L20 4m-5 0h5v5"
                                 />
                             </svg></Link>
-                        <Link className="ml-4 text-lg font-medium capitalize text-dark underline dark:text-light md:text-base" href='/'>Contact Me</Link>
+                        <Link className="ml-4 text-lg font-medium capitalize text-dark underline dark:text-light md:text-base" href='/contact'>Contact Me</Link>
                     </div>
 
                 </div>

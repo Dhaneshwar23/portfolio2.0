@@ -198,7 +198,7 @@ export default function NavBar({ }) {
                 <Link href="/" target={"_blank"}>twitter </Link> */}
                             <button onClick={() => setMode(mode === "light" ? "dark" : "light")} className=' flex items-center justify-center p-1'>
                                 {
-                                    mode === "dark" ? <Image src={SunIcon} width={30} alt='' className='bg-light text-dark rounded-full' /> : <Image src={MoonIcon} alt={''} width={30} />
+                                    mode === "dark" ? <Image src={SunIcon} width={30} alt='' className='bg-light text-dark rounded-full' /> : <Image src={MoonIcon} alt={''} width={30} className='bg-light text-dark rounded-full' />
                                 }
                             </button>
                         </nav>
