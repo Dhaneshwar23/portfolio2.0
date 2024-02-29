@@ -8,9 +8,9 @@ type Props = {}
 export default function _app({Component, pageProps, router }: AppProps) {
   return (
     <main>
-    <AnimatePresence mode="wait">
+    
       <Component {...pageProps} key={router.asPath} />
-    </AnimatePresence>
+    
     </main>
   )
 }
