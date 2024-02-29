@@ -80,7 +80,7 @@ export default function Home() {
           <title>Dhaneshwar&apos;s Portfolio</title>
         </Head>
         
-        
+        <TransitionEffect />
         <NavBar />
         
         <Script id="theme-switcher" strategy='beforeInteractive'>{
@@ -90,7 +90,7 @@ export default function Home() {
           document.documentElement.classList.remove('dark')
         }`
         }</Script>
-        <TransitionEffect />
+        
         <main className="flex items-center text-dark w-full min-h-screen ">
           
           <HomePage pageInfo={data?.pageInfo} />
@@ -98,7 +98,7 @@ export default function Home() {
           <div className="absolute right-8 bottom-8 inline-block w-24">
             <Image src={LightBulb} alt="" className="w-full h-auto md:hidden" />
           </div>
-
+          
         </main>
       </div>
       
