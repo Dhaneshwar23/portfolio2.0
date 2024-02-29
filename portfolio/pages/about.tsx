@@ -11,10 +11,13 @@ import { fetchSocials } from '@/Utils/fetchSocials';
 import Image from 'next/image';
 import { urlFor } from '@/sanity';
 import ProfilePicture from '@/public/images/IMG_7887.jpg';
-import { useInView, useMotionValue, useSpring } from 'framer-motion';
+import { AnimatePresence, useInView, useMotionValue, useSpring } from 'framer-motion';
 import Skills from '@/components/Skills';
 import Experiences from '@/components/Experience';
 import apiData from '@/components/hooks/apiData';
+import TransitionEffect from '@/components/TransitionEffect';
+import Script from 'next/script';
+import { usePathname } from 'next/navigation';
 
 type Props = {
   pageInfo: PageInfo;
@@ -49,7 +52,7 @@ const AnimatedNumbers = ({ value }: { value: number }) => {
 
 export default function About({ }: Props) {
   
-  const [data] = apiData();
+  const {data,loading} = apiData();
   
   // const [data, setData] = useState<Props | null>(null
   // );
@@ -84,27 +87,41 @@ export default function About({ }: Props) {
   // }, []);
   let profilePic = data?.pageInfo.profilePic === undefined ? ProfilePicture : urlFor(data?.pageInfo.profilePic).url();
   //let profilePic = 'https://cdn.sanity.io/images/myk5m1s4/production/2772729ba0468caefd566e2c27f8a740809ec9f1-2368x1941.jpg';
+  const backGroundInformation = data?.pageInfo.backgroundInformation.replace(/\. /g, ". \n");
+
+ 
+    
   return (
-    <>
+    
+    <div>
       <NavBar />
+      
       <Head>
         <title>About</title>
         <meta name="description" content='overall career description' />
       </Head>
-      
-      <main className='flex w-full px-32 py-8 flex-col items-center justify-center dark:text-light bg-light dark:bg-dark'>
+      <Script id="theme-switcher" strategy='beforeInteractive'>{
+          `if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }`
+        }</Script>
+        
+        <TransitionEffect />
+      <main key={Math.random()} className='flex w-full px-32 py-8 flex-col items-center justify-center dark:text-light bg-light dark:bg-dark'>
       <h1 className='font-bold text-8xl text-center mb-5 md:text-6xl hidden sm:block'>About</h1>
         <div className='pt-16  dark:bg-dark'>
           <div className='grid w-full grid-cols-8 gap-16 sm:gap-8 '>
 
             <div className=' col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8'>
               <h4 className='mb-4 text-lg font-bold'>Here is a <span className='underline decoration-[#F7AB0A]'>little</span> background</h4>
-              <p className='font-medium'>{data?.pageInfo.backgroundInformation}</p>
+              <div  className='font-medium whitespace-pre-line' >{backGroundInformation}</div>
 
             </div>
             <div className='col-span-3 relative h-max rounded-2xl border-2 border-solid bg-light dark:border-light border-dark dark:bg-dark p-8 xl:col-span-4 md:order-1 md:col-span-8'>
               <div className='absolute top-0 -right-3 -z-20 w-[102%] h-[103%] rounded-[2rem] bg-dark ' />
-              <Image src={profilePic} alt={''} width={600} height={600} className='w-full h-auto rounded-2xl' />
+              <Image src={profilePic} alt={''} width={600} height={600} className='w-full h-auto rounded-2xl' key={Math.random()+1}/>
 
             </div>
             <div className=' col-span-2 flex flex-col items-end justify-between xl:col-span-8 xl:flex-row xl:items-center md:order-3'>
@@ -132,6 +149,6 @@ export default function About({ }: Props) {
         <Skills Skills={data?.skills} />
         <Experiences experiences={data?.experiences} />
       </main>
-    </>
+    </div>
   )
-}
+  }

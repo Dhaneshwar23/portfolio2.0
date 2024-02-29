@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Montserrat } from 'next/font/google'
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import NavBar from "@/components/NavBar";
 import { Experience, PageInfo, Project, Skill, Social } from "@/typings";
 import { fetchPageInfo } from "@/Utils/fetchPageInfo";
@@ -17,6 +17,9 @@ import layouts from "./layout";
 import Link from "next/link";
 import Script from "next/script";
 import apiData from "@/components/hooks/apiData";
+import TransitionEffect from "@/components/TransitionEffect";
+import { usePathname } from "next/navigation";
+import { AnimatePresence } from "framer-motion";
 
 const montSerrat = Montserrat(
   {
@@ -31,6 +34,7 @@ type Props = {
   skills: Skill[];
   socials: Social[];
   projects: Project[];
+  children: React.ReactNode
 };
 
 export default function Home() {
@@ -66,31 +70,37 @@ export default function Home() {
   //   processData();
   // }, []);
 
-  const [data] = apiData();
-
-  return (
-
-    <div className={`${montSerrat.variable} font-mont bg-light w-full min-h-screen dark:bg-dark`}>
-      <Head>
-        <title>Dhaneshwar&apos;s Portfolio</title>
-      </Head>
-
-      <NavBar />
-      <Script id="theme-switcher" strategy='beforeInteractive'>{
-        `if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  const { data, loading } = apiData();
+ 
+    return (
+      
+       
+      <div className={`${montSerrat.variable} font-mont bg-light w-full min-h-screen dark:bg-dark`}>
+        <Head>
+          <title>Dhaneshwar&apos;s Portfolio</title>
+        </Head>
+        
+        
+        <NavBar />
+        
+        <Script id="theme-switcher" strategy='beforeInteractive'>{
+          `if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark')
         } else {
           document.documentElement.classList.remove('dark')
         }`
-      }</Script>
-      <main className="flex items-center text-dark w-full min-h-screen ">
-        <HomePage pageInfo={data?.pageInfo} />
-        <HireMe />
-        <div className="absolute right-8 bottom-8 inline-block w-24">
-          <Image src={LightBulb} alt="" className="w-full h-auto md:hidden" />
-        </div>
+        }</Script>
+        <TransitionEffect />
+        <main className="flex items-center text-dark w-full min-h-screen ">
+          
+          <HomePage pageInfo={data?.pageInfo} />
+          <HireMe />
+          <div className="absolute right-8 bottom-8 inline-block w-24">
+            <Image src={LightBulb} alt="" className="w-full h-auto md:hidden" />
+          </div>
 
-      </main>
-    </div>
-  );
-}
+        </main>
+      </div>
+      
+    );
+  }

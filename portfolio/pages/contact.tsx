@@ -3,6 +3,7 @@ import React from 'react'
 import './global.css'
 import { PhoneIcon, MapIcon, EnvelopeIcon } from "@heroicons/react/16/solid";
 import { SubmitHandler, useForm } from "react-hook-form";
+import TransitionEffect from '@/components/TransitionEffect';
 
 type Inputs = {
     name: string;
@@ -20,6 +21,7 @@ export default function Contact({}: Props) {
     };
   return (
     <>
+    <TransitionEffect />
     <NavBar />
     <div className="h-screen relative flex flex-col text-center md:text-left px-4 md:px-10 justify-center items-center bg-light w-full dark:bg-dark dark:text-light mx-auto">
             

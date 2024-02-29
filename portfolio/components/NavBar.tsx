@@ -12,6 +12,7 @@ import useThemeSwitcher from './hooks/useThemeSwitcher';
 import SunIcon from '@/public/images/sun.svg'
 import MoonIcon from '@/public/images/moon-clear-fill.svg'
 import Image from 'next/image'
+import Script from 'next/script';
 
 const CustomLink = ({ href, title, classname = "" }: { href: string, title: string, classname: string }) => {
     const router = usePathname();
@@ -91,13 +92,20 @@ export default function NavBar({ }) {
         setIsOpen(!isOpen)
     }
     return (
+        
         <header className=' relative w-full px-32 py-8 font-medium flex items-center justify-between bg-light dark:bg-dark dark:text-light lg:px-16 md:px-12 sm:px-8'>
             <button className='flex-col justify-center items-center hidden lg:flex' onClick={handClick}>
                 <span className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} ></span>
                 <span className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></span>
                 <span className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
             </button>
-
+            <Script id="theme-switcher" strategy='beforeInteractive'>{
+          `if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }`
+        }</Script>
             <div className='w-full flex justify-between items-center lg:hidden'>
                 <motion.div
                     initial={router === '/' ? {

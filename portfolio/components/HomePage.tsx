@@ -49,8 +49,8 @@ export default function Layout({ pageInfo }: Props) {
                     src={profilePic} alt={"Profile Photo"} className=" h-auto rounded-sm lg:hidden md:inline-block md:w-full" />
                 </div>
                 <div className='w-1/2 flex flex-col items-center self-center dark:text-light mx-auto lg:w-full lg:text-center'>
-                    <div className='w-full mx-auto py-2 flex items-center justify-center text-center
-                    overflow-hidden mb-5 sm:py-0 sm:mb-3 sm:h-20'>
+                    <div className='w-full mx-auto py-2 h-44 flex items-center justify-center text-center
+                    overflow-hidden mb-5 sm:py-0 sm:mb-3 sm:h-20 lg:h-36'>
                         <h1 className={`inline-block w-full text-dark font-bold capitalize text-6xl text-left dark:text-light xl:text-5xl
                         lg:text-center lg:text-6xl md:text-5xl sm:text-3xl `}>
                             <span className='inline-block'>{text}&nbsp;
@@ -58,7 +58,7 @@ export default function Layout({ pageInfo }: Props) {
                         </h1>
                     </div>
                     <p className='my-4 text-base font-medium  md:text-sm sm:text-xs'>As a skilled full-stack developer, I am dedicated to turning ideas into innovative web applications.
-                        Explore my latest projects and articles, showcasing my expertise in React.js and web development.
+                    With proficiency in both front-end and back-end technologies, I bring a comprehensive understanding of the entire web development process. From crafting engaging user interfaces to building robust server-side logic, I leverage my expertise to create seamless and impactful digital experiences.
                     </p>
                     <div className='flex items-center self-start mt-2 lg:self-center '>
                         <Link className='flex items-center bg-dark text-light p-2.5 px-6 

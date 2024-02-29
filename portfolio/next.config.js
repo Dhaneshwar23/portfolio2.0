@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
     async headers() {
         return [
             {
@@ -13,10 +14,11 @@ const nextConfig = {
                 ]
             }
         ]
-    }
+    },
+    reactStrictMode:false
   }
 module.exports={
-    reactStrictMode: true,
+    reactStrictMode: false,
     images: {
       domains: ['cdn.sanity.io'],
     },

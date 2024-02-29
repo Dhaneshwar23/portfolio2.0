@@ -3,7 +3,9 @@ import { fetchPageInfo } from '@/Utils/fetchPageInfo';
 import { fetchProjects } from '@/Utils/fetchProjects';
 import { fetchSkills } from '@/Utils/fetchSkills';
 import { fetchSocials } from '@/Utils/fetchSocials';
+import { client } from '@/sanity';
 import { Experience, PageInfo, Project, Skill, Social } from '@/typings';
+import { NextApiRequest } from 'next';
 import React, { useEffect, useState } from 'react'
 
 type Props = {
@@ -17,7 +19,7 @@ type Props = {
 export default function ApiData() {
     const [data, setData] = useState<Props | null>(null
     );
-
+const [loading,setLoading] =useState(true);
     const processData = async () => {
         try {
             const pageInfo: PageInfo = await fetchPageInfo();
@@ -41,11 +43,15 @@ export default function ApiData() {
         catch (err) {
             console.log('err happend in page.tsx-->  ', err);
         }
+        finally{
+            setLoading(false);
+        }
     }
     useEffect(() => {
         // Define a function to process data
         processData();
+        
     }, []);
 
-    return [data]
+    return {data,loading}
 }

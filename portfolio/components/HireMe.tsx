@@ -10,7 +10,7 @@ type Props = {}
 export default function HireMe({ }: Props) {
     return (
         <div className='fixed left-2 bottom-2 flex items-center justify-center
-    overflow-hidden md:right-8 md:left-auto md:top-0 sm:right-0 md:bottom-auto md:absolute'>
+    overflow-hidden md:right-8 md:left-auto md:top-0 sm:right-0 md:bottom-auto md:absolute '>
             <div className='w-48 h-auto flex item-center justify-center relative sm:w-40'>
                 <Image src={TextSvg} alt={''} className='fill-dark animate-spin-slow dark:fill-light'></Image>
 
