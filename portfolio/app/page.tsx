@@ -34,11 +34,10 @@ type Props = {
   skills: Skill[];
   socials: Social[];
   projects: Project[];
-  children: React.ReactNode
 };
 
 
-export default function Home({ pageInfo }: Props) {
+export default function Home({  }) {
   // const [data, setData] = useState<Props | null>(null
   // );
 
@@ -71,7 +70,7 @@ export default function Home({ pageInfo }: Props) {
   //   processData();
   // }, []);
 
-  //const { data, loading } = apiData();
+  const { data, loading } = apiData();
 
   return (
 
@@ -94,7 +93,7 @@ export default function Home({ pageInfo }: Props) {
 
       <main className="flex items-center text-dark w-full min-h-screen ">
 
-        <HomePage pageInfo={pageInfo} />
+        <HomePage pageInfo={data?.pageInfo} />
         <HireMe />
         <div className="absolute right-8 bottom-8 inline-block w-24">
           <Image src={LightBulb} alt="" className="w-full h-auto md:hidden" />
@@ -104,8 +103,5 @@ export default function Home({ pageInfo }: Props) {
     </div>
 
   );
-}
-function getInitialProps() {
-  throw new Error("Function not implemented.");
 }
 

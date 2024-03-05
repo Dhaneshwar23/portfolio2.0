@@ -50,29 +50,34 @@ const AnimatedNumbers = ({ value }: { value: number }) => {
 
   return <span ref={ref}></span>
 }
-export async function getStaticProps(){
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const experiences: Experience[] = await fetchExperiences();
+// export async function getStaticProps(){
+//   try{
+//   const pageInfo: PageInfo = await fetchPageInfo();
+//   const experiences: Experience[] = await fetchExperiences();
 
-  const skills: Skill[] = await fetchSkills();
+//   const skills: Skill[] = await fetchSkills();
 
-  const projects: Project[] = await fetchProjects();
+//   const projects: Project[] = await fetchProjects();
 
-  const socials: Social[] = await fetchSocials();
-  return {
-    props: {
-      pageInfo,
-      experiences,
-      skills,
-      socials,
-      projects
-    },
-  };
-}
+//   const socials: Social[] = await fetchSocials();
+//   return {
+//     props: {
+//       pageInfo,
+//       experiences,
+//       skills,
+//       socials,
+//       projects
+//     },
+//   };
+// }
+// catch(err){
+//   console.log('error in about page-->  ',err);
+// }
+// }
 
-const About=({ pageInfo, socials, projects, skills, experiences }:Props)=> {
+const About=({})=> {
 
-  //const { data, loading } = apiData();
+  const { data, loading } = apiData();
 
   // const [data, setData] = useState<Props | null>(null
   // );
@@ -105,9 +110,9 @@ const About=({ pageInfo, socials, projects, skills, experiences }:Props)=> {
   //   // Define a function to process data
   //   processData();
   // }, []);
-  //let profilePic = pageInfo.profilePic === undefined ? ProfilePicture : urlFor(pageInfo.profilePic).url();
-  let profilePic = 'https://cdn.sanity.io/images/myk5m1s4/production/2772729ba0468caefd566e2c27f8a740809ec9f1-2368x1941.jpg';
-  const backGroundInformation = '• ' + pageInfo.backgroundInformation.replace(/\. /g, ". \n • ");
+  let profilePic = data?.pageInfo.profilePic === undefined ? ProfilePicture : urlFor(data?.pageInfo.profilePic).url();
+  //let profilePic = 'https://cdn.sanity.io/images/myk5m1s4/production/2772729ba0468caefd566e2c27f8a740809ec9f1-2368x1941.jpg';
+  const backGroundInformation = '• ' + data?.pageInfo.backgroundInformation.replace(/\. /g, ". \n • ");
 
 
 
@@ -166,8 +171,8 @@ const About=({ pageInfo, socials, projects, skills, experiences }:Props)=> {
 
           </div>
         </div>
-        <Skills Skills={skills} />
-        <Experiences experiences={experiences} />
+        <Skills Skills={data?.skills} />
+        <Experiences experiences={data?.experiences} />
       </main>
     </div>
   )
