@@ -123,6 +123,7 @@ export default function NavBar({ }) {
                     }}
 
                     transition={{
+                        delay:0.9,
                         duration: 1.5
                     }}
                 >

@@ -15,10 +15,10 @@ const nextConfig = {
             }
         ]
     },
-    reactStrictMode: true
+    reactStrictMode: false
 }
 module.exports = {
-    reactStrictMode: true,
+    reactStrictMode: false,
     images: {
         domains: ['cdn.sanity.io'],
     },

@@ -29,7 +29,7 @@ const montSerrat = Montserrat(
 )
 
 type Props = {
-  pageInfo: PageInfo;
+  pageInfo: PageInfo | undefined;
   experiences: Experience[];
   skills: Skill[];
   socials: Social[];
@@ -37,7 +37,8 @@ type Props = {
   children: React.ReactNode
 };
 
-export default function Home() {
+
+export default function Home({ pageInfo }: Props) {
   // const [data, setData] = useState<Props | null>(null
   // );
 
@@ -70,37 +71,41 @@ export default function Home() {
   //   processData();
   // }, []);
 
-  const { data, loading } = apiData();
- 
-    return (
-      
-       
-      <div className={`${montSerrat.variable} font-mont bg-light w-full min-h-screen dark:bg-dark`}>
-        <Head>
-          <title>Dhaneshwar&apos;s Portfolio</title>
-        </Head>
-        
-        <TransitionEffect />
-        <NavBar />
-        
-        <Script id="theme-switcher" strategy='beforeInteractive'>{
-          `if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  //const { data, loading } = apiData();
+
+  return (
+
+
+    <div className={`${montSerrat.variable} font-mont bg-light w-full min-h-screen dark:bg-dark`}>
+      <Head>
+        <title>Dhaneshwar&apos;s Portfolio</title>
+      </Head>
+
+      <TransitionEffect />
+      <NavBar />
+
+      <Script id="theme-switcher" strategy='beforeInteractive'>{
+        `if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark')
         } else {
           document.documentElement.classList.remove('dark')
         }`
-        }</Script>
-        
-        <main className="flex items-center text-dark w-full min-h-screen ">
-          
-          <HomePage pageInfo={data?.pageInfo} />
-          <HireMe />
-          <div className="absolute right-8 bottom-8 inline-block w-24">
-            <Image src={LightBulb} alt="" className="w-full h-auto md:hidden" />
-          </div>
-          
-        </main>
-      </div>
-      
-    );
-  }
+      }</Script>
+
+      <main className="flex items-center text-dark w-full min-h-screen ">
+
+        <HomePage pageInfo={pageInfo} />
+        <HireMe />
+        <div className="absolute right-8 bottom-8 inline-block w-24">
+          <Image src={LightBulb} alt="" className="w-full h-auto md:hidden" />
+        </div>
+
+      </main>
+    </div>
+
+  );
+}
+function getInitialProps() {
+  throw new Error("Function not implemented.");
+}
+

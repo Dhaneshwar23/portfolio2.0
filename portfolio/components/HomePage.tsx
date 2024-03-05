@@ -7,18 +7,27 @@ import { useTypewriter } from 'react-simple-typewriter';
 import { PageInfo } from '@/typings';
 import Link from 'next/link';
 import { urlFor } from '@/sanity';
+import { fetchPageInfo } from '@/Utils/fetchPageInfo';
 type Props = {
     pageInfo: PageInfo | undefined;
 }
 
+export async function getStaticProps(){
+const pageInfo = await fetchPageInfo();
 
+return {
+    props:{
+        pageInfo
+    }
+}
+}
 
 // const text = "Turning Vision Into Reality With Code And Design.";
 
 export default function Layout({ pageInfo }: Props) {
     const [text, count] = useTypewriter({
         words: [
-            `Hi, The Name's ${pageInfo?.name}`,
+            `Hi, The Name's Dhaneshwar Koshti`,
             "The-Guy-Who-Loves-Coffee"
         ],
         loop: true,

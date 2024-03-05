@@ -6,7 +6,7 @@ import { fetchSocials } from '@/Utils/fetchSocials';
 import { client } from '@/sanity';
 import { Experience, PageInfo, Project, Skill, Social } from '@/typings';
 import { NextApiRequest } from 'next';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 type Props = {
     pageInfo: PageInfo;
@@ -20,6 +20,8 @@ export default function ApiData() {
     const [data, setData] = useState<Props | null>(null
     );
 const [loading,setLoading] =useState(true);
+
+const initialize = useRef(false);
     const processData = async () => {
         try {
             const pageInfo: PageInfo = await fetchPageInfo();
@@ -48,8 +50,12 @@ const [loading,setLoading] =useState(true);
         }
     }
     useEffect(() => {
+        if(!initialize.current){
         // Define a function to process data
+        initialize.current = true;
         processData();
+
+        }
         
     }, []);
 
