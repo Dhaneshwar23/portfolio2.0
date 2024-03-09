@@ -10,8 +10,8 @@ type Props = {
 }
 
 export default function ExperienceCard({ experience }: Props) {
-    const dateStarted = experience?.dateStarted === undefined ? ' ' : new Date(experience?.dateStarted).toUTCString().split(' ').slice(1, 4).join(' ');
-    const dateEnded = experience?.dateEnded === undefined ? ' ' : new Date(experience?.dateEnded).toUTCString().split(' ').slice(1, 4).join(' ');
+    const dateStarted = experience?.dateStarted === undefined ? ' ' : new Date(experience?.dateStarted).toUTCString().split(' ').slice(2, 4).join(' ');
+    const dateEnded = experience?.dateEnded === undefined ? ' ' : new Date(experience?.dateEnded).toUTCString().split(' ').slice(2, 4).join(' ');
 
     const ref = useRef(null);
     return (
@@ -41,7 +41,7 @@ export default function ExperienceCard({ experience }: Props) {
                         ))}
                     </div>
                     <span>
-                        <p className='uppercase py-5 text-gray-800 sm:text-xl xs:text-lg'>{dateStarted} - {experience?.isCurrentWorkingHere ? "Present" : dateEnded}</p>
+                        <p className='uppercase py-5 text-gray-800 dark:text-gray-400 sm:text-xl xs:text-lg'>{dateStarted} - {experience?.isCurrentWorkingHere ? "Present" : dateEnded}</p>
                         <ul className='font-medium w-full mb-10 items-start md:text-sm justify-center sm:w-[170%]'>
                             {experience?.points?.map((point, i) => (
                                 <li className='list-disc' key={i}>{point}</li>

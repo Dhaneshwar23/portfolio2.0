@@ -21,7 +21,7 @@ export default function Skill({ skills, directionLeft }: Props) {
                 src={urlFor(skills?.image).url()}
                 viewport={{ once: true }}
                 className="rounded-full border border-gray-500 object-cover 
-                w-20 h-20 md:w-20 md:h-12 xl:w-20 xl:h-20 xs:w-10 xs:h-10 filter group-hover:grayscale transition duration-300 ease-in-out"
+                w-20 h-20 md:w-20 md:h-12 xl:w-20 xl:h-20 xs:w-10 xs:h-10 filter group-hover:grayscale transition duration-300 ease-in-out dark:bg-light"
             />
 
             {/* <div className='absolute opacity-0 group-hover:opacity-80 transition duration-300

@@ -173,6 +173,7 @@ const About=({})=> {
         </div>
         <Skills Skills={data?.skills} />
         <Experiences experiences={data?.experiences} />
+        <div className='mt-10'></div>
       </main>
     </div>
   )
